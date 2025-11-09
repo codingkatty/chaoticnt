@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://chqpcgkmcmd24"]
+[gd_scene load_steps=15 format=3 uid="uid://chqpcgkmcmd24"]
 
 [ext_resource type="PackedScene" uid="uid://nh8v0l1neocp" path="res://scenes/pendulum.tscn" id="1_5vxan"]
 [ext_resource type="Texture2D" uid="uid://qud48h0frhw" path="res://images/ui/thanks_title.png" id="1_r4oei"]
@@ -6,6 +6,26 @@
 [ext_resource type="Texture2D" uid="uid://cqu32gdqpl27q" path="res://images/ui/backbtn_dark.png" id="4_4826q"]
 [ext_resource type="Texture2D" uid="uid://c3igtkwtlwxov" path="res://images/ui/backbtn_highlighted.png" id="5_531e2"]
 [ext_resource type="Script" uid="uid://tjhcxqij4ijh" path="res://scripts/back.gd" id="6_5vxan"]
+[ext_resource type="Texture2D" uid="uid://c6jcugpm4w0kb" path="res://images/blubby/Happy-1.png" id="7_d70ak"]
+[ext_resource type="Texture2D" uid="uid://o8ncmltvyaf" path="res://images/blubby/Happy-2.png" id="8_woh6y"]
+[ext_resource type="Texture2D" uid="uid://dlev1tylci76m" path="res://images/blubby/Happy-3.png" id="9_rx2gv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_doh3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_d70ak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_woh6y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rx2gv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="Animation" id="Animation_v86rl"]
 length = 0.001
@@ -106,6 +126,19 @@ texture_normal = ExtResource("3_5vxan")
 texture_pressed = ExtResource("4_4826q")
 texture_hover = ExtResource("5_531e2")
 script = ExtResource("6_5vxan")
+
+[node name="blubbydance" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(912.5, 492)
+sprite_frames = SubResource("SpriteFrames_doh3d")
+autoplay = "default"
+
+[node name="blubbydance2" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(212.5, 482)
+sprite_frames = SubResource("SpriteFrames_doh3d")
+autoplay = "default"
+flip_h = true
 
 [node name="transition" type="ColorRect" parent="."]
 layout_mode = 0

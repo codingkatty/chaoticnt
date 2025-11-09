@@ -11,5 +11,7 @@ variation_opentype = {
 
 [resource]
 RichTextLabel/colors/default_color = Color(0.180392, 0.72549, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(1, 0.968627, 0.858824, 1)
+RichTextLabel/constants/outline_size = 6
 RichTextLabel/font_sizes/normal_font_size = 32
 RichTextLabel/fonts/normal_font = SubResource("FontVariation_wl1kw")
