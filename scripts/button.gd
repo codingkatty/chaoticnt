@@ -5,7 +5,7 @@ extends TextureButton
 var lvt = preload("res://scenes/tutorial.tscn")
 
 func _ready() -> void:
-	pass
+	AudioPlayer.play_music_level()
 
 func _process(_delta: float) -> void:
 	var b1_pos = pendulum.ball1.global_position

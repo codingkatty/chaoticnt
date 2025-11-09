@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cabmprw68epg5"]
+[gd_scene load_steps=14 format=3 uid="uid://cabmprw68epg5"]
 
 [ext_resource type="PackedScene" uid="uid://nh8v0l1neocp" path="res://scenes/pendulum.tscn" id="1_g3eks"]
 [ext_resource type="Texture2D" uid="uid://db2mm45ebdeaf" path="res://images/ui/logo.png" id="2_v86rl"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://vfgdnwqvjfj" path="res://images/ui/playbtn_dark.png" id="4_i6lef"]
 [ext_resource type="Texture2D" uid="uid://xfjrair0kneb" path="res://images/ui/playbtn_highlighted.png" id="5_70i5f"]
 [ext_resource type="Script" uid="uid://bbcq8rdgiigrb" path="res://scripts/button.gd" id="6_mj5lg"]
+[ext_resource type="Texture2D" uid="uid://cv32tuusn4q2v" path="res://images/ui/sound_on.png" id="7_13sgg"]
+[ext_resource type="Texture2D" uid="uid://iia0jhccnpco" path="res://images/ui/sound_off.png" id="8_i6lef"]
+[ext_resource type="Script" uid="uid://b4u063j5cn4qr" path="res://scenes/music_toggle.gd" id="9_i6lef"]
 
 [sub_resource type="Animation" id="Animation_v86rl"]
 length = 0.001
@@ -106,6 +109,19 @@ texture_pressed = ExtResource("4_i6lef")
 texture_hover = ExtResource("5_70i5f")
 script = ExtResource("6_mj5lg")
 
+[node name="music" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1046.0
+offset_top = 546.0
+offset_right = 1146.0
+offset_bottom = 646.0
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("7_13sgg")
+texture_pressed = ExtResource("8_i6lef")
+script = ExtResource("9_i6lef")
+
 [node name="transition" type="ColorRect" parent="."]
 layout_mode = 0
 offset_bottom = 40.0
@@ -119,4 +135,5 @@ libraries = {
 autoplay = "in"
 
 [connection signal="pressed" from="button" to="button" method="_on_pressed"]
+[connection signal="pressed" from="music" to="music" method="_on_pressed"]
 [connection signal="animation_finished" from="transition/anim" to="button" method="_on_transition_animation_finished"]

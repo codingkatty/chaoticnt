@@ -6,6 +6,7 @@ var next_lvl
 var next_level_number = 1
 
 func _ready() -> void:
+	AudioPlayer.play_music_level()
 	transition.play("in")
 
 	var crnt_scene_file = get_tree().current_scene.scene_file_path

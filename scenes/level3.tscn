@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://cnnsg2oc3aml6"]
+[gd_scene load_steps=39 format=4 uid="uid://cnnsg2oc3aml6"]
 
 [ext_resource type="Texture2D" uid="uid://bgf3d7c3tsq83" path="res://images/blue.png" id="1_qyu38"]
 [ext_resource type="PackedScene" uid="uid://nh8v0l1neocp" path="res://scenes/pendulum.tscn" id="2_8vbrh"]
@@ -9,8 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://cxerswr6yh5q7" path="res://images/Star-4.png" id="7_88b2t"]
 [ext_resource type="Texture2D" uid="uid://c0wv6px16gou7" path="res://images/Star-5.png" id="8_0ydwj"]
 [ext_resource type="Script" uid="uid://deyqxix3buo0m" path="res://scripts/player.gd" id="9_612gg"]
+[ext_resource type="Texture2D" uid="uid://cv32tuusn4q2v" path="res://images/ui/sound_on.png" id="10_7hs6g"]
 [ext_resource type="Texture2D" uid="uid://dj4fmq060f2ar" path="res://images/blubby/Hold.png" id="10_unl4q"]
 [ext_resource type="Texture2D" uid="uid://djwnbram8stkg" path="res://images/blubby/Idle-1.png" id="11_usk20"]
+[ext_resource type="Texture2D" uid="uid://iia0jhccnpco" path="res://images/ui/sound_off.png" id="11_yeq8b"]
+[ext_resource type="Script" uid="uid://b4u063j5cn4qr" path="res://scenes/music_toggle.gd" id="12_invaa"]
 [ext_resource type="Texture2D" uid="uid://t0n4dhms3atw" path="res://images/blubby/Idle-2.png" id="12_y8u0o"]
 [ext_resource type="Texture2D" uid="uid://coch3ru8fw6sv" path="res://images/blubby/Idle-3.png" id="13_16ffm"]
 [ext_resource type="Texture2D" uid="uid://dcilyljtiux1d" path="res://images/blubby/Jump.png" id="14_kvrlk"]
@@ -237,6 +240,18 @@ position = Vector2(280, 271)
 scale = Vector2(0.760001, 0.760001)
 script = ExtResource("9_612gg")
 
+[node name="music" type="TextureButton" parent="Player"]
+texture_filter = 1
+offset_left = 846.052
+offset_top = 436.842
+offset_right = 946.052
+offset_bottom = 536.842
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("10_7hs6g")
+texture_pressed = ExtResource("11_yeq8b")
+script = ExtResource("12_invaa")
+
 [node name="transition" type="ColorRect" parent="Player"]
 z_index = 1
 offset_left = -968.42
@@ -336,6 +351,7 @@ theme = ExtResource("23_k8cr3")
 text = "crazy level"
 
 [connection signal="body_entered" from="star" to="star" method="_on_body_entered"]
+[connection signal="pressed" from="Player/music" to="Player/music" method="_on_pressed"]
 [connection signal="animation_finished" from="Player/transition/anim" to="star" method="_on_transition_animation_finished"]
 [connection signal="area_entered" from="Player/hands" to="Player" method="_on_area_entered"]
 [connection signal="area_exited" from="Player/hands" to="Player" method="_on_area_exited"]

@@ -13,7 +13,13 @@ config_version=5
 config/name="chaoticnt"
 run/main_scene="uid://cabmprw68epg5"
 config/features=PackedStringArray("4.4", "Mobile")
+boot_splash/bg_color=Color(1, 0.968627, 0.858824, 1)
+boot_splash/image="uid://t0n4dhms3atw"
 config/icon="res://icon.svg"
+
+[autoload]
+
+AudioPlayer="*res://scenes/audio_player.tscn"
 
 [display]
 
