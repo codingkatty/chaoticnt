@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://nh8v0l1neocp"]
+
+[ext_resource type="Script" uid="uid://bfx0bx4s6633f" path="res://scripts/dpendulum.gd" id="1_ts572"]
+[ext_resource type="Texture2D" uid="uid://dy3wa8vapnmd8" path="res://images/ball.png" id="2_uxaci"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_301do"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ts572")
+m2 = 50
+a1 = 0.1
+a2 = 0.2
+
+[node name="line1" type="Line2D" parent="."]
+
+[node name="line2" type="Line2D" parent="."]
+
+[node name="ball1" type="Area2D" parent="." groups=["pendulum"]]
+
+[node name="ball1" type="Sprite2D" parent="ball1"]
+texture_filter = 1
+texture = ExtResource("2_uxaci")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball1"]
+position = Vector2(0, 14)
+scale = Vector2(4.72, 2.16)
+shape = SubResource("CapsuleShape2D_301do")
+
+[node name="ball2" type="Area2D" parent="." groups=["pendulum"]]
+
+[node name="ball2" type="Sprite2D" parent="ball2"]
+texture_filter = 1
+texture = ExtResource("2_uxaci")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ball2"]
+position = Vector2(0, 14)
+scale = Vector2(4.72, 2.16)
+shape = SubResource("CapsuleShape2D_301do")

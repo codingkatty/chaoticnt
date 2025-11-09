@@ -1,0 +1,123 @@
+[gd_scene load_steps=11 format=3 uid="uid://chqpcgkmcmd24"]
+
+[ext_resource type="PackedScene" uid="uid://nh8v0l1neocp" path="res://scenes/pendulum.tscn" id="1_5vxan"]
+[ext_resource type="Texture2D" uid="uid://qud48h0frhw" path="res://images/ui/thanks_title.png" id="1_r4oei"]
+[ext_resource type="Texture2D" uid="uid://4qnighmenyyb" path="res://images/ui/backbtn_normal.png" id="3_5vxan"]
+[ext_resource type="Texture2D" uid="uid://cqu32gdqpl27q" path="res://images/ui/backbtn_dark.png" id="4_4826q"]
+[ext_resource type="Texture2D" uid="uid://c3igtkwtlwxov" path="res://images/ui/backbtn_highlighted.png" id="5_531e2"]
+[ext_resource type="Script" uid="uid://tjhcxqij4ijh" path="res://scripts/back.gd" id="6_5vxan"]
+
+[sub_resource type="Animation" id="Animation_v86rl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_13sgg"]
+resource_name = "in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.554, 1),
+"update": 0,
+"values": [Vector2(5100, 40), Vector2(0, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_g3eks"]
+resource_name = "out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.554785, 1),
+"update": 0,
+"values": [Vector2(0, 40), Vector2(5100, 40)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i6lef"]
+_data = {
+&"RESET": SubResource("Animation_v86rl"),
+&"in": SubResource("Animation_13sgg"),
+&"out": SubResource("Animation_g3eks")
+}
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="pendulum" parent="." instance=ExtResource("1_5vxan")]
+position = Vector2(569, 200)
+scale = Vector2(1.12, 1.12)
+
+[node name="thanks" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21875
+anchor_top = 0.101852
+anchor_right = 0.987293
+anchor_bottom = 0.428519
+offset_right = -427.362
+offset_bottom = -9.68024
+grow_horizontal = 2
+scale = Vector2(1.36, 1.36)
+texture = ExtResource("1_r4oei")
+stretch_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="button" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.0
+offset_top = -12.0
+offset_right = 294.0
+offset_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.76, 0.76)
+texture_normal = ExtResource("3_5vxan")
+texture_pressed = ExtResource("4_4826q")
+texture_hover = ExtResource("5_531e2")
+script = ExtResource("6_5vxan")
+
+[node name="transition" type="ColorRect" parent="."]
+layout_mode = 0
+offset_bottom = 40.0
+scale = Vector2(0.229265, 17.5901)
+color = Color(0.854299, 0.959943, 1, 1)
+
+[node name="anim" type="AnimationPlayer" parent="transition"]
+libraries = {
+&"": SubResource("AnimationLibrary_i6lef")
+}
+autoplay = "in"
+
+[connection signal="pressed" from="button" to="button" method="_on_pressed"]
+[connection signal="animation_finished" from="transition/anim" to="button" method="_on_transition_animation_finished"]

@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c23xpmq72syrw"]
+
+[ext_resource type="FontFile" uid="uid://cfuqckdf04orr" path="res://assets/Inter.woff2" id="1_5x3i2"]
+
+[sub_resource type="FontVariation" id="FontVariation_wl1kw"]
+base_font = ExtResource("1_5x3i2")
+variation_opentype = {
+1869640570: 14,
+2003265652: 700
+}
+
+[resource]
+RichTextLabel/colors/default_color = Color(0.180392, 0.72549, 1, 1)
+RichTextLabel/font_sizes/normal_font_size = 32
+RichTextLabel/fonts/normal_font = SubResource("FontVariation_wl1kw")
